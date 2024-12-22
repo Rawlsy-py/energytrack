@@ -33,6 +33,4 @@ enum Readings {
     Meter,
     Reading,
     Date,
-    
 }
-

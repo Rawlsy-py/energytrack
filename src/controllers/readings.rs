@@ -1,10 +1,10 @@
 #![allow(clippy::missing_errors_doc)]
 #![allow(clippy::unnecessary_struct_initialization)]
 #![allow(clippy::unused_async)]
-use loco_rs::prelude::*;
-use serde::{Deserialize, Serialize};
-use sea_orm::{sea_query::Order, QueryOrder};
 use axum::debug_handler;
+use loco_rs::prelude::*;
+use sea_orm::{sea_query::Order, QueryOrder};
+use serde::{Deserialize, Serialize};
 
 use crate::{
     models::_entities::readings::{ActiveModel, Column, Entity, Model},
@@ -16,14 +16,14 @@ pub struct Params {
     pub meter: Option<String>,
     pub reading: i64,
     pub date: Option<Date>,
-    }
+}
 
 impl Params {
     fn update(&self, item: &mut ActiveModel) {
-      item.meter = Set(self.meter.clone());
-      item.reading = Set(self.reading.clone());
-      item.date = Set(self.date.clone());
-      }
+        item.meter = Set(self.meter.clone());
+        item.reading = Set(self.reading.clone());
+        item.date = Set(self.date.clone());
+    }
 }
 
 async fn load_item(ctx: &AppContext, id: i32) -> Result<Model> {
